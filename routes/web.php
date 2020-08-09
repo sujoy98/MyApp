@@ -23,4 +23,4 @@ Route::get('/services', 'PagesController@services');
 /* resource('post','PostController'),
 will create all the routes from the functions we created
 */
-Route::resource('post','PostController');
+Route::resource('posts','PostsController');

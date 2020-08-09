@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // return a view form posts folder in views folder
+        return view('posts.index');
     }
 
     /**
