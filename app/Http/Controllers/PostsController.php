@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+/*
+we want to fetch our post so we need to bring in the model Post we created
+which is in the namespace App and it has the title of Post i.e App\Post
+*/
+use App\Post;
 
-class PostController extends Controller
+class PostsController extends Controller
+// all the function are mapped to routes
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +19,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        // return a view form posts folder in views folder
-        return view('posts.index');
+        /*
+        we can use any of the model function with
+        Post, and this is auctually Eloquent which is object relational mapper
+        here Post::all() means we are fetch all data in the models
+        */
+        $posts = Post::all();
+        // loading the view form posts/index in views folder
+        return view('posts/index')->with('posts',$posts);
     }
 
     /**
@@ -29,7 +41,7 @@ class PostController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * $request object to take variables form the form
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -40,7 +52,7 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
-     * $id of post to show
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -51,7 +63,7 @@ class PostController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     * id of posts
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -62,7 +74,7 @@ class PostController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * $request form the form and update in specific $id of a post
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -74,7 +86,7 @@ class PostController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * takes the $id of a post to delete
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
