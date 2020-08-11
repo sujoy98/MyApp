@@ -21,6 +21,6 @@ Route::get('/login', 'PagesController@login');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 /* resource('post','PostController'),
-will create all the routes from the functions we created
+that's goinf to automatically map routes to those functions
 */
 Route::resource('posts','PostsController');

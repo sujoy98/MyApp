@@ -2,13 +2,15 @@
 
 @section('content')
     <h1>Posts</h1><br>
-    @if(count($posts) > 1)
+    @if(count($posts) > 0)
         @foreach($posts as $post)
-            <div class="well">
-                <h4>{{$post->title}}</h4>
-                <small>Created on {{$post->created_at}}</small>
+            <div class="card">
+                <h4><a href="/posts/{{$post->id}}">{{$post->title}}</a></h4>
+                <small>Created on {{$post->created_at}}</small><br>
             </div>
         @endforeach
+        <hr>
+        {{$posts->links()}}
     @else
         <p>No posts found</p>
     @endif

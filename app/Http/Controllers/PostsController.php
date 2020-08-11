@@ -22,10 +22,15 @@ class PostsController extends Controller
         /*
         we can use any of the model function with
         Post, and this is auctually Eloquent which is object relational mapper
-        here Post::all() means we are fetch all data in the models
+        here Post::all() means we are fetch all data form the models
+        @posts is an Associative array
         */
-        $posts = Post::all();
+        // $posts = Post::all();
+        // return Post::where('title','Post Two')->get();
+        //$posts = Post::orderBy('title','desc')->get();
         // loading the view form posts/index in views folder
+        // paginate('posts per page') -> adding the page number
+        $posts = Post::orderBy('title','desc')->paginate(5);
         return view('posts/index')->with('posts',$posts);
     }
 
@@ -58,7 +63,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts/show')->with('post',$post);
     }
 
     /**
@@ -69,7 +75,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
