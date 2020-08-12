@@ -30,7 +30,7 @@ class PostsController extends Controller
         //$posts = Post::orderBy('title','desc')->get();
         // loading the view form posts/index in views folder
         // paginate('posts per page') -> adding the page number
-        $posts = Post::orderBy('title','desc')->paginate(5);
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
         return view('posts/index')->with('posts',$posts);
     }
 
@@ -56,7 +56,14 @@ class PostsController extends Controller
             'title'=> 'required',
             'body'=>'required'
         ]);
-        return 123;
+        // Create Post, we can create object of the Post here because we imported App\Post model
+        $post=new Post;
+        $post->title=$request->input('title');
+        $post->body=$request->input('body');
+        $post->save();
+
+        // we created a success message in message.blade.php
+        return redirect('/posts')->with('success','Post Created');
     }
 
     /**
