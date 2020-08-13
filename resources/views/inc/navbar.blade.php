@@ -4,11 +4,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="nav navbar-nav">
         <li class="nav-item "><a class="nav-link" href="/login">Login or Signup</a></li>
         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
     </ul>
   </div>
 </nav>

@@ -54,12 +54,12 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title'=> 'required',
-            'body'=>'required'
+            'summary-ckeditor'=>'required'
         ]);
         // Create Post, we can create object of the Post here because we imported App\Post model
         $post=new Post;
         $post->title=$request->input('title');
-        $post->body=$request->input('body');
+        $post->body=$request->input('summary-ckeditor');
         $post->save();
 
         // we created a success message in message.blade.php
