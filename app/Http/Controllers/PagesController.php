@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function login(){
         //$title="Hello World";
-        return view('pages/login');
+        return view('pages/mlogin');
         //return view('pages/index')->with('title',$title);
     }
         public function about(){

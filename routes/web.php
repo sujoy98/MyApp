@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', 'PagesController@login');
+Route::get('/mlogin', 'PagesController@login');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 /* resource('post','PostController'),
-that's goinf to automatically map routes to those functions
+that's going to automatically map routes to those functions
 */
 Route::resource('posts','PostsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

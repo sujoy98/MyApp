@@ -54,12 +54,16 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title'=> 'required',
-            'summary-ckeditor'=>'required'
+            'body'=>'required'
         ]);
         // Create Post, we can create object of the Post here because we imported App\Post model
         $post=new Post;
         $post->title=$request->input('title');
-        $post->body=$request->input('summary-ckeditor');
+        $post->body=$request->input('body');
+        /* unique user_id for each registered user using auth() form
+           laravel's default authentication scheme.
+        */
+        $post->user_id = auth()->user()->id;
         $post->save();
 
         // we created a success message in message.blade.php
@@ -86,7 +90,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-
+        $post = Post::find($id);
+        return view('posts/edit')->with('post','$post');
     }
 
     /**
@@ -98,7 +103,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+        'title'=> 'required',
+        'body'=>'required'
+        ]);
+        // finding the post with specific $id
+        $post = Post::find($id);
+        $post->title=$request->input('title');
+        $post->body=$request->input('body');
+        $post->save();
+
+        // we created a success message in message.blade.php
+        return redirect('/posts')->with('success','Post Updated');
     }
 
     /**
@@ -109,6 +125,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post =Post::find($id);
+        $post->delete();
+        return redirect('/posts')->with('success','Post Deleted');
     }
 }
