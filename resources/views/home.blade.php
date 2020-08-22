@@ -19,7 +19,9 @@
                             @foreach($posts as $post)
                                 <tr>
                                     <td>{{$post->title}}</td>
-                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-default float-right">Edit</a></td>
+
+                                    <!--<td><a href="/posts/{{$post->id}}/edit" class="btn btn-default float-right">Edit</a></td> -->
+
                                     <td>
                                         {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}
                                         <!-- spoofing -->
@@ -27,6 +29,7 @@
                                         {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
                                         {!!Form::close()!!}
                                     </td>
+
                                 </tr>
                             @endforeach
                         </table>

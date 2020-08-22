@@ -28,3 +28,4 @@ Route::resource('posts','PostsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('posts/{id}/edit','PostsController@edit');
