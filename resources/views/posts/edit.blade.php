@@ -12,7 +12,7 @@
             {{Form::label('body','Body')}}
             {{Form::textarea('body',$post->body,['class'=>'form-control','placeholder'=>'Body Text'])}}
         </div>
-        {{From::hidden('_method','PUT')}}
+        {{Form::hidden('_method','PUT')}}
         <!-- adding a submit button  -->
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}

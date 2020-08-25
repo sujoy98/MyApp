@@ -17,7 +17,7 @@
     <small>Created at {{$post->created_at}} by {{$post->user->name}}</small>
     <hr>
     <!-- Adding an edit button for the posts -->
-    <!--<a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a> -->
+    <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
 
     <!-- importing Laravel Collective. url-> https://laravelcollective.com/docs/6.0/html-->
 
