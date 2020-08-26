@@ -17,14 +17,17 @@
     <small>Created at {{$post->created_at}} by {{$post->user->name}}</small>
     <hr>
     <!-- Adding an edit button for the posts -->
-    <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
+    @if(!Auth::guest())
+        @if(Auth::user()->id == $post->user_id)
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
 
-    <!-- importing Laravel Collective. url-> https://laravelcollective.com/docs/6.0/html-->
+            <!-- importing Laravel Collective. url-> https://laravelcollective.com/docs/6.0/html-->
 
-    {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}
-        <!-- spoofing -->
-        {{Form::hidden('_method','DELETE')}}
-        {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
-    {!!Form::close()!!}
-
+            {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}
+                <!-- spoofing -->
+                {{Form::hidden('_method','DELETE')}}
+                {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
+            {!!Form::close()!!}
+        @endif
+    @endif
 @endsection

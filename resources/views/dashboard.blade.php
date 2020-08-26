@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="card-body">
-                    <a href="/posts/create" class="btn btn-default float-right">Create Post</a>
+                    <a href="/posts/create" class="btn btn-secondary float-right">Create Post</a>
                     <h4>Your Posts</h4>
                     @if(count($posts)>0)
                         <table class="table table-stripped">
@@ -20,7 +20,7 @@
                                 <tr>
                                     <td>{{$post->title}}</td>
 
-                                    <!--<td><a href="/posts/{{$post->id}}/edit" class="btn btn-default float-right">Edit</a></td> -->
+                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary float-right">Edit</a></td>
 
                                     <td>
                                         {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}

@@ -11,10 +11,10 @@
             <ul class="navbar-nav mr-auto">
                 <!-- Added all our pages -->
                 <ul class="nav navbar-nav">
-                    <li class="nav-item "><a class="nav-link" href="/mlogin">Home</a></li>
+                    {{-- <li class="nav-item "><a class="nav-link" href="/mlogin">Home</a></li> --}}
+                    <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/posts">Posts</a></li>
                 </ul>
             </ul>
            <!-- Right Side Of Navbar -->
@@ -43,7 +43,7 @@
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            <a class="dropdown-item" href="/home">Dashboard</a>
+                            <a class="dropdown-item" href="/dashboard">Dashboard</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

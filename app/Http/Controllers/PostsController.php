@@ -13,6 +13,16 @@ class PostsController extends Controller
 // all the function are mapped to routes
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index','show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -91,6 +101,10 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        // Check for the correct user otherwise an unauthorised user can manipulate any post
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error','Permission denied unauthorised user');
+        }
         return view('posts.edit')->with('post',$post);
     }
 
@@ -126,7 +140,16 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post =Post::find($id);
+        // Check for the correct user otherwise an unauthorised user can manipulate any post
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error','Permission denied unauthorised user');
+        }
         $post->delete();
         return redirect('/posts')->with('success','Post Deleted');
     }
+    // public function home()
+    // {
+    //     $posts = Post::orderBy('created_at','desc')->paginate(5);
+    //     return view('posts.home')->with('posts',$posts);
+    // }
 }

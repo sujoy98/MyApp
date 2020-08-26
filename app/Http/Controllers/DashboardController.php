@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 // importing User model
 use App\User;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -32,6 +32,6 @@ class HomeController extends Controller
         $user = User::find($user_id);
 
         // as we have added the model relationship in Post and User model we can use $user->posts
-        return view('home')->with('posts',$user->posts);
+        return view('dashboard')->with('posts',$user->posts);
     }
 }
