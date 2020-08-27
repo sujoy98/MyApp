@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <div class="card-body">
+                <div class="card-header">{{ __('Admin Dashboard') }}</div>
+                {{-- <div class="card-body">
                     <a href="/posts/create" class="btn btn-secondary float-right">Create Post</a>
                     <h4>Your Posts</h4>
                     @if(count($posts)>0)
@@ -20,7 +20,6 @@
                                 <tr>
                                     <td>{{$post->title}}</td>
 
-                                    <td><a href="/posts/{{$post->id}}" class="btn btn-primary float-right">View</a></td>
                                     <td><a href="/posts/{{$post->id}}/edit" class="btn btn-primary float-right">Edit</a></td>
 
                                     <td>
@@ -30,13 +29,15 @@
                                         {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
                                         {!!Form::close()!!}
                                     </td>
+
                                 </tr>
                             @endforeach
                         </table>
                     @else
-                        <p>You have no posts</p>
+                        <p>No posts</p>
                     @endif
-                </div>
+                </div> --}}
+                <footer>Logged in as <strong>ADMIN</strong></footer>
             </div>
         </div>
     </div>

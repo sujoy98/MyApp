@@ -2,6 +2,7 @@
 @extends('layouts.app')
 @section('content')
     <h1>Edit Post</h1><br>
+    <a href="/posts" class="btn btn-light">Go  Back</a>
     <!-- importing Laravel Collective. url-> https://laravelcollective.com/docs/6.0/html-->
         {{-- to update the post we need to use the 'update' method form the postcontroller --}}
   {!!Form::open(['action'=>['PostsController@update',$post->id], 'method'=>'POST'])!!}

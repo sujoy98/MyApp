@@ -6,9 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class admin extends Authenticatable
+class Admin extends Authenticatable
 {
     use Notifiable;
+
+    // guards form config/auth
+    protected $guard = 'admin';
 
     /**
      * The attributes that are mass assignable.
