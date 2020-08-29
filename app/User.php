@@ -41,4 +41,25 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post');
     }
+
+    // getting all the roles assigned to a user
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    // assigning role to a user
+    public function assignRole($role)
+    {
+        if(is_string($role)){
+            $role = Role::whereName($role)->firstOrFail();
+        }
+        $this->roles()->sync($role,false);
+    }
+
+    // to check the ablilities of a user, using HIGHER ORDER COLLECTION
+    public function abilities()
+    {
+        return $this->roles->map->abilities->flatten()->pluck('name')->unique();
+    }
 }
